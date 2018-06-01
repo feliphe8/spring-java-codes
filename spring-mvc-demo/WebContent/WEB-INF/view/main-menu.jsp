@@ -11,6 +11,7 @@
 		<h1 class="">Spring MVC Demo - Home Page</h1>
 		<a class="btn" href="hello/showForm">Hello World Form </a>
 		<a class="btn" href="student/showForm">Student Form </a>
+		<a class="btn" href="customer/showForm">Customer Form </a>
 		
 		<br>
 		<br>
