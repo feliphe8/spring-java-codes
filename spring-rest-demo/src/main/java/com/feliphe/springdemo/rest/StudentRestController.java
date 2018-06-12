@@ -15,10 +15,6 @@ import com.feliphe.springdemo.entity.Student;
 public class StudentRestController {
 	private List<Student> students;
 
-	public StudentRestController() {
-		loadData();
-	}
-
 	// @PostConstruct
 	public void loadData() {
 		students = new ArrayList<>();
@@ -26,6 +22,10 @@ public class StudentRestController {
 		students.add(new Student("Feliphe", "Simoes"));
 		students.add(new Student("Irelia", "Evergreen"));
 		students.add(new Student("Lydia", "Evergreen"));
+	}
+
+	public StudentRestController() {
+		loadData();
 	}
 
 	@GetMapping("/students")
@@ -36,6 +36,12 @@ public class StudentRestController {
 	@GetMapping("/students/{id}")
 	public Student getStudentById(@PathVariable int id) {
 
+		// check id against list size
+		if ((id >= students.size()) || (id < 0)) {
+			throw new StudentNotFoundException("Student id not found - " + id);
+		}
+
 		return students.get(id);
 	}
+
 }
